@@ -5,6 +5,7 @@ import com.example.spemajorbackend.entity.StoragePoint;
 import com.example.spemajorbackend.repository.ReviewRepo;
 import com.example.spemajorbackend.repository.StoragePointRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/storagepoint")
-public class ApiController
+public class StoragePointController
 {
     @Autowired
     StoragePointRepo storagePointRepo;
@@ -50,13 +51,13 @@ public class ApiController
     }
 
     @RequestMapping("/{id}")
-    public StoragePoint getStoragePoint(@RequestParam("id") String id)
+    public StoragePoint getStoragePoint(@PathVariable String id)
     {
-        return storagePointRepo.getById(id);
+        return storagePointRepo.findById(id);
     }
 
     @RequestMapping("/{id}/reviews")
-    public List<Review> getReviews(@RequestParam("id") String id)
+    public List<Review> getReviews(@PathVariable String id)
     {
         return reviewRepo.findByStoragepointId(id);
     }

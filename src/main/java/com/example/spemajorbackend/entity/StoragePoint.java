@@ -2,6 +2,7 @@ package com.example.spemajorbackend.entity;
 
 import com.example.spemajorbackend.entity.nested.Coordinates;
 import com.example.spemajorbackend.entity.nested.Location;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -40,7 +41,9 @@ public class StoragePoint
     @OneToMany(mappedBy = "storagepoint")
     private List<Review> reviews = new ArrayList<>();
 
-
+    @ManyToOne
+    @JsonIgnore
+    private Admin admin;
 
     public StoragePoint()
     {
@@ -172,5 +175,21 @@ public class StoragePoint
 
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
+    }
+
+    public int getStoragepoint_id() {
+        return storagepoint_id;
+    }
+
+    public void setStoragepoint_id(int storagepoint_id) {
+        this.storagepoint_id = storagepoint_id;
+    }
+
+    public Admin getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Admin admin) {
+        this.admin = admin;
     }
 }
