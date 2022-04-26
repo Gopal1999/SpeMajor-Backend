@@ -1,7 +1,10 @@
 package com.example.spemajorbackend.controller;
 
+import com.example.spemajorbackend.entity.Region;
 import com.example.spemajorbackend.entity.Review;
 import com.example.spemajorbackend.entity.StoragePoint;
+import com.example.spemajorbackend.entity.StoragePointWithRegion;
+import com.example.spemajorbackend.entity.nested.Center;
 import com.example.spemajorbackend.repository.ReviewRepo;
 import com.example.spemajorbackend.repository.StoragePointRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +27,16 @@ public class StoragePointController
     ReviewRepo reviewRepo;
 
     @RequestMapping(value = "/getall")
-    public List<StoragePoint> getNearBy(@RequestParam("latitude") Double latitude, @RequestParam("longitude") Double longitude, @RequestParam("radius") Integer radius)
+    public StoragePointWithRegion getNearBy(@RequestParam("latitude") Double latitude, @RequestParam("longitude") Double longitude, @RequestParam("radius") Integer radius)
     {
+
         System.out.println("Hello");
         List<StoragePoint> list = storagePointRepo.findAll();
         List<StoragePoint>result = new ArrayList<>();
+        Center center = new Center();
+        center.setLatitude(latitude);
+        center.setLongitude(longitude);
+        Region region = new Region(center);
         for(StoragePoint obj: list)
         {
             final int R = 6371; // Radius of the earth
@@ -45,9 +53,12 @@ public class StoragePointController
                 obj.setDistance(distance);
                 result.add(obj);
             }
-
         }
-        return result;
+
+        StoragePointWithRegion storagePointWithRegion = new StoragePointWithRegion();
+        storagePointWithRegion.setList(result);
+        storagePointWithRegion.setRegion(region);
+        return storagePointWithRegion;
     }
 
     @RequestMapping("/{id}")
