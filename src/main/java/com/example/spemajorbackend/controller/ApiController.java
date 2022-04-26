@@ -1,10 +1,14 @@
 package com.example.spemajorbackend.controller;
 
+import com.example.spemajorbackend.entity.Region;
 import com.example.spemajorbackend.entity.Review;
 import com.example.spemajorbackend.entity.StoragePoint;
+import com.example.spemajorbackend.entity.StoragePointWithRegion;
+import com.example.spemajorbackend.entity.nested.Center;
 import com.example.spemajorbackend.repository.ReviewRepo;
 import com.example.spemajorbackend.repository.StoragePointRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,11 +27,16 @@ public class ApiController
     ReviewRepo reviewRepo;
 
     @RequestMapping(value = "/getall")
-    public List<StoragePoint> getNearBy(@RequestParam("latitude") Double latitude, @RequestParam("longitude") Double longitude, @RequestParam("radius") Integer radius)
+    public StoragePointWithRegion getNearBy(@RequestParam("latitude") Double latitude, @RequestParam("longitude") Double longitude, @RequestParam("radius") Integer radius)
     {
+
         System.out.println("Hello");
         List<StoragePoint> list = storagePointRepo.findAll();
         List<StoragePoint>result = new ArrayList<>();
+        Center center = new Center();
+        center.setLatitude(latitude);
+        center.setLongitude(longitude);
+        Region region = new Region(center);
         for(StoragePoint obj: list)
         {
             final int R = 6371; // Radius of the earth
@@ -44,19 +53,22 @@ public class ApiController
                 obj.setDistance(distance);
                 result.add(obj);
             }
-
         }
-        return result;
+
+        StoragePointWithRegion storagePointWithRegion = new StoragePointWithRegion();
+        storagePointWithRegion.setList(result);
+        storagePointWithRegion.setRegion(region);
+        return storagePointWithRegion;
     }
 
     @RequestMapping("/{id}")
-    public StoragePoint getStoragePoint(@RequestParam("id") String id)
+    public StoragePoint getStoragePoint(@PathVariable("id") String id)
     {
-        return storagePointRepo.getById(id);
+        return storagePointRepo.findById(id);
     }
 
     @RequestMapping("/{id}/reviews")
-    public List<Review> getReviews(@RequestParam("id") String id)
+    public List<Review> getReviews(@PathVariable("id") String id)
     {
         return reviewRepo.findByStoragepointId(id);
     }
