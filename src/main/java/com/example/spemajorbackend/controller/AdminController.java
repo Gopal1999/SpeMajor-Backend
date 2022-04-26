@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/storagepoint")
+@RequestMapping("/storagepoint/admin")
 public class AdminController
 {
     @Autowired
