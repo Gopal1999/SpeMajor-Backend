@@ -1,11 +1,14 @@
 package com.example.spemajorbackend.entity.nested;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
 public class Coordinates
 {
+    @Column(nullable = false)
     private double latitude;
+    @Column(nullable = false)
     private double longitude;
 
     public double getLatitude() {

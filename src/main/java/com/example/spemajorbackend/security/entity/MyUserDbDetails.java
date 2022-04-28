@@ -1,6 +1,6 @@
 package com.example.spemajorbackend.security.entity;
 
-import com.example.spemajorbackend.entity.Admin;
+import com.example.spemajorbackend.entity.Vendor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -27,7 +27,7 @@ public class MyUserDbDetails implements UserDetails
     }
 
 
-    public MyUserDbDetails(Admin admin)
+    public MyUserDbDetails(Vendor admin)
     {
         this.email = admin.getEmail();
         this.password = admin.getPassword();

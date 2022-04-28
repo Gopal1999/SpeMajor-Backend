@@ -15,6 +15,7 @@ public class StoragePoint
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int storagepoint_id;
 
+    @Column(nullable = false)
     private String id;
 
     private String alias;
@@ -31,6 +32,7 @@ public class StoragePoint
     @Embedded
     private Location location;
 
+
     private String phone;
     private String display_phone;
     private double distance;
@@ -43,7 +45,7 @@ public class StoragePoint
 
     @ManyToOne
     @JsonIgnore
-    private Admin admin;
+    private Vendor vendor;
 
     public StoragePoint()
     {
@@ -185,11 +187,11 @@ public class StoragePoint
         this.storagepoint_id = storagepoint_id;
     }
 
-    public Admin getAdmin() {
-        return admin;
+    public Vendor getVendor() {
+        return vendor;
     }
 
-    public void setAdmin(Admin admin) {
-        this.admin = admin;
+    public void setVendor(Vendor vendor) {
+        this.vendor = vendor;
     }
 }

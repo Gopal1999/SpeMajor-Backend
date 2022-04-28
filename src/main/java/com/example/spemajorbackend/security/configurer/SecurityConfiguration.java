@@ -42,7 +42,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
     protected void configure(HttpSecurity http) throws Exception
     {
         http.csrf().disable().authorizeRequests()
-                .antMatchers("/admin/login", "/admin/signup", "/storagepoint/getall", "/storagepoint/{id}", "/storagepoint/{id}/reviews").permitAll()
+                .antMatchers("/vendor/login", "/vendor/signup", "/storagepoint/getall", "/storagepoint/{id}", "/storagepoint/{id}/reviews").permitAll()
                 .anyRequest().authenticated()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);

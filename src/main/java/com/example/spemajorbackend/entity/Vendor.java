@@ -5,26 +5,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Admin
+public class Vendor
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(nullable = false)
     private String email;
+
+    @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false)
     private String role;
+
+    @Column(nullable = false)
     private String mobile;
 
-    public Admin()
+    public Vendor()
     {
 
     }
 
-    @OneToMany(mappedBy = "admin")
+    @OneToMany(mappedBy = "vendor")
     private List<StoragePoint> storagePoint = new ArrayList<>();
 
-    public Admin(int id, String email, String password, String role, String mobile) {
+    public Vendor(int id, String email, String password, String role, String mobile) {
         this.id = id;
         this.email = email;
         this.password = password;

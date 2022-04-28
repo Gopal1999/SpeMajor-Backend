@@ -1,7 +1,7 @@
 package com.example.spemajorbackend.security.configurer;
 
-import com.example.spemajorbackend.entity.Admin;
-import com.example.spemajorbackend.security.Repository.AdminRepo;
+import com.example.spemajorbackend.entity.Vendor;
+import com.example.spemajorbackend.security.Repository.VendorRepo;
 import com.example.spemajorbackend.security.entity.MyUserDbDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,7 +14,7 @@ import java.util.Optional;
 public class MyUserDetailsService implements UserDetailsService
 {
     @Autowired
-    AdminRepo adminRepository;
+    VendorRepo adminRepository;
 
     //    @Override
 //    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -23,7 +23,7 @@ public class MyUserDetailsService implements UserDetailsService
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException
     {
-        Optional<Admin> user = adminRepository.findByEmail(email);
+        Optional<Vendor> user = adminRepository.findByEmail(email);
 
         user.orElseThrow(()->new UsernameNotFoundException("Not found: " + email));
         return user.map(MyUserDbDetails::new).get();
