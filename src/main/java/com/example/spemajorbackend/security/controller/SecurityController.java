@@ -135,6 +135,7 @@ public class SecurityController
         return "StoragePoint is updated successfully";
     }
 
+    @CrossOrigin(origins = "http://localhost:8100")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody Vendor authenticateRequest) throws Exception
     {
