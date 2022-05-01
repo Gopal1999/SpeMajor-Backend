@@ -6,4 +6,4 @@
       shell: docker pull coolgopalgoyal/majorprojectbackend
 
     - name: running container
-      shell: docker run --network backend-mysql --name backend-server -p 8080:8080 -d coolgopalgoyal/majorprojectbackend
+      shell: docker run --network backend-mysql --name backend-server -p 8080:8080 --link dbserver -d coolgopalgoyal/majorprojectbackend
