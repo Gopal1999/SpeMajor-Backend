@@ -6,4 +6,4 @@
       shell: docker pull mysql/mysql-server:latest
 
     - name: running container
-      shell: docker run -v mysql-data:/var/lib/mysql --name dbserver -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password -d mysql/mysql-server:latest
+      shell: docker run -v mysql-data:/var/lib/mysql --name dbserver --network backend-mysql -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=SpeMajordb -d mysql/mysql-server:latest
