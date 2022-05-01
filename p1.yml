@@ -4,6 +4,9 @@
   tasks:
     - name: pull docker image
       shell: docker pull mysql/mysql-server:latest
+    
+    - name: Create Network
+      shell: docker network create backend-mysql
 
     - name: running container
       shell: docker run -v mysql-data:/var/lib/mysql --name dbserver --network backend-mysql -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=SpeMajordb -d mysql/mysql-server:latest
