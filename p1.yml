@@ -1,0 +1,9 @@
+---
+- name: Pull docker image of the MySql Server
+  hosts: all
+  tasks:
+    - name: pull docker image
+      shell: docker pull mysql/mysql-server:latest
+
+    - name: running container
+      shell: docker run -v mysql-data:/var/lib/mysql --name dbserver -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password -d mysql/mysql-server:latest
