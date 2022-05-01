@@ -58,8 +58,8 @@ public class SecurityController
         }
     }
 
-    @RequestMapping("/id/getall")
-    public List<StoragePoint> getAllStoragePoints(@PathParam("id") Integer id)
+    @RequestMapping("/getall")
+    public List<StoragePoint> getAllStoragePoints()
     {
         UserDetails userDetails = jwtRequestFilter.getUserDetails();
         String email = userDetails.getUsername();
@@ -69,7 +69,8 @@ public class SecurityController
         {
             return new ArrayList<>();
         }
-        List<StoragePoint> list =  storagePointRepo.findByVendorId(id);
+
+        List<StoragePoint> list =  storagePointRepo.findByVendorId(user.get().getId());
         List<StoragePoint> result = new ArrayList<>();
         for(StoragePoint storagePoint: list)
         {
