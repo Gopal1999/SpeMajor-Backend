@@ -9,4 +9,4 @@
       shell: docker network create backend-mysql
 
     - name: running container 
-      shell: docker run --name dbserver --network backend-mysql -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=SpeMajordb -e MYSQL_PASSWORD=password -d mysql/mysql-server:latest
+      shell: docker run -v mysql-data:/var/lib/mysql --name dbserver --network backend-mysql -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=SpeMajordb -e MYSQL_PASSWORD=password -d mysql/mysql-server:latest
