@@ -11,6 +11,8 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableTransactionManagement
+@SpringBootApplication
+@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 @PropertySource("classpath:application.properties")
 public class DatasourceConfig {
 
