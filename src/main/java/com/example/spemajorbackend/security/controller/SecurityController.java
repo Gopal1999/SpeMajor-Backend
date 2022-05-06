@@ -1,6 +1,4 @@
 package com.example.spemajorbackend.security.controller;
-
-
 import com.example.spemajorbackend.entity.StoragePoint;
 import com.example.spemajorbackend.entity.Vendor;
 import com.example.spemajorbackend.repository.StoragePointRepo;
@@ -58,8 +56,9 @@ public class SecurityController
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:8100")
     @RequestMapping("/id/getall")
-    public List<StoragePoint> getAllStoragePoints(@PathParam("id") Integer id)
+    public List<StoragePoint> getAllStoragePoints()
     {
         UserDetails userDetails = jwtRequestFilter.getUserDetails();
         String email = userDetails.getUsername();
@@ -69,7 +68,7 @@ public class SecurityController
         {
             return new ArrayList<>();
         }
-        List<StoragePoint> list =  storagePointRepo.findByVendorId(id);
+        List<StoragePoint> list =  storagePointRepo.findByVendorId(user.get().getId());
         List<StoragePoint> result = new ArrayList<>();
         for(StoragePoint storagePoint: list)
         {
