@@ -13,7 +13,7 @@ services:
 #     depends_on:
 #       dbserver:
 #          condition: service_completed_successfully
-    entrypoint: https://github.com/vishnubob/wait-for-it.sh dbserver:3306 -- echo "dbserver is up"
+    entrypoint: ./wait-for-it.sh dbserver:3306 -- echo "dbserver is up"
 
     networks:
       - backendmysql
