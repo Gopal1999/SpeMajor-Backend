@@ -16,8 +16,8 @@
         ports:
           - "3308:3306"
          
-          volumes:
-           - mysql-data:/var/lib/mysql12  
+        volumes:
+          - /home/gopal/Desktop/temp/db:/var/lib/mysql  
            
     - name: Create Springboot Backend container
       docker_container:
