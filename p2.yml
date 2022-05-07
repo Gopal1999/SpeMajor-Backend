@@ -5,28 +5,28 @@
   become: true
   tasks:
     - name: Create MYSQL container
-        docker_container:
-          name: dbserver
-          image: mysql/mysql-server:latest
-          networks:
-            - name: "backend-mysql"
-          env:
-            MYSQL_ROOT_PASSWORD: password
-            MYSQL_DATABASE: SpeMajordb
-          ports:
-            - "3308:3306"
+      docker_container:
+        name: dbserver
+        image: mysql/mysql-server:latest
+        networks:
+          - name: "backend-mysql"
+        env:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: SpeMajordb
+        ports:
+          - "3308:3306"
          
           volumes:
            - mysql-data:/var/lib/mysql12  
            
     - name: Create Springboot Backend container
-       docker_container:
-         name: backend-server
-         image: coolgopalgoyal/majorprojectbackend:latest
-         networks:
-           - name: "backend-mysql"
-         env:
-           DATABASE_HOST: dbserver
-         ports:
-           - "8081:8081"
+      docker_container:
+        name: backend-server
+        image: coolgopalgoyal/majorprojectbackend:latest
+        networks:
+          - name: "backend-mysql"
+        env:
+          DATABASE_HOST: dbserver
+        ports:
+          - "8081:8081"
 
