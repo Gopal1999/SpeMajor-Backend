@@ -1,4 +1,4 @@
-version: "2.1"
+version: "3.9"
 
 services:
   # -------------------- NeighbourStorage APIs Express Container -------------------- #
@@ -10,10 +10,10 @@ services:
       - DATABASE_HOST=dbserver
     ports:
        - "8081:8081"
-#     depends_on:
-#       dbserver:
-#          condition: service_completed_successfully
-    entrypoint: wait-for-it.sh dbserver:3306 -- echo "dbserver is up"
+    depends_on:
+      dbserver:
+         condition: service_completed_successfully
+#     entrypoint: wait-for-it.sh dbserver:3306 -- echo "dbserver is up"
 
     networks:
       - backendmysql
