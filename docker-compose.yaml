@@ -9,10 +9,11 @@ services:
     environment:
       - DATABASE_HOST=dbserver
     ports:
-      - "8081:8081"
-    depends_on:
-      dbserver:
-         condition: service_completed_successfully
+#       - "8081:8081"
+#     depends_on:
+#       dbserver:
+#          condition: service_completed_successfully
+    entrypoint: ./wait-for-it.sh dbserver:3306
     networks:
       - backendmysql
     restart: unless-stopped
