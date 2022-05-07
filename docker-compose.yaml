@@ -1,0 +1,41 @@
+version: "3"
+
+services:
+  # -------------------- NeighbourStorage APIs Express Container -------------------- #
+
+  Backend-server:
+    image: coolgopalgoyal/majorprojectbackend:latest
+    container_name: backend-server
+    environment:
+      - DATABASE_HOST=dbserver
+    ports:
+      - "8081:8081"
+    depends_on:
+      - dbserver
+    networks:
+      - backendmysql
+    restart: unless-stopped
+
+  # -------------------- MySqlDB -------------------- #
+
+  dbserver:
+    image: mysql/mysql-server:latest
+    container_name: dbserver
+    environment:
+      - MYSQL_DATABASE=SpeMajordb
+      - MYSQL_ROOT_PASSWORD=password
+    ports:
+      - "3308:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql12
+    networks:
+      - backendmysql
+    restart: unless-stopped
+
+networks:
+  backendmysql:
+    driver: bridge
+
+volumes:
+  mysql-data:
+    driver: local
