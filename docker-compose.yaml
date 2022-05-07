@@ -1,3 +1,5 @@
+version: "2.1"
+
 services:
   # -------------------- NeighbourStorage APIs Express Container -------------------- #
 
@@ -10,7 +12,7 @@ services:
        - "8081:8081"
     depends_on:
       dbserver:
-         condition: service_completed_successfully
+         condition: service_healthy
 #     entrypoint: wait-for-it.sh dbserver:3306 -- echo "dbserver is up"
 
     networks:
@@ -27,6 +29,10 @@ services:
       - MYSQL_ROOT_PASSWORD=password
     ports:
       - "3308:3306"
+    healthcheck:
+            test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+            timeout: 20s
+            retries: 10  
     volumes:
       - mysql-data:/var/lib/mysql12
     networks:
