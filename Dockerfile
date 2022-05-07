@@ -1,4 +1,7 @@
 FROM tomcat
-FROM openjdk:8
-ENV MYSQL_URL=jdbc:mysql://dbserver/SpeMajordb?createDatabaseIfNotExist=true MYSQL_USER=root MYSQL_PASSWORD=password
+FROM FROM openjdk:11
 COPY ./target/SpeMajor-backend-0.0.1-SNAPSHOT.jar /usr/local/tomcat/webapps
+EXPOSE 8081
+COPY ./target/SpeMajor-backend-0.0.1-SNAPSHOT.jar ./
+WORKDIR ./
+ENTRYPOINT ["java", "-jar", "SpeMajor-backend-0.0.1-SNAPSHOT.jar"]
