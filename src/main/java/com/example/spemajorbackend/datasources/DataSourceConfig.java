@@ -16,7 +16,7 @@ public class DataSourceConfig {
         dataSourceBuilder.driverClassName("com.mysql.cj.jdbc.Driver");
         String url = System.getenv("DATABASE_HOST");
         if(url !=null){
-            dataSourceBuilder.url("jdbc:mysql://dbserver:3308/SpeMajordb?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&autoReconnect=true&failOverReadOnly=false&maxReconnects=10");
+            dataSourceBuilder.url("jdbc:mysql://dbserver:3306/SpeMajordb?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&autoReconnect=true&failOverReadOnly=false&maxReconnects=10");
         }else{
             dataSourceBuilder.url("jdbc:mysql://localhost:3306/SpeMajordb?createDatabaseIfNotExist=true");
         }
