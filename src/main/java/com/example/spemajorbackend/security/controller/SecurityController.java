@@ -7,6 +7,9 @@ import com.example.spemajorbackend.security.configurer.MyUserDetailsService;
 import com.example.spemajorbackend.security.entity.AuthenticateResponse;
 import com.example.spemajorbackend.security.filters.JwtRequestFilter;
 import com.example.spemajorbackend.security.util.jwtutil;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.BeanWrapper;
+import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,9 +20,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @RequestMapping("/vendor")
@@ -111,28 +112,10 @@ public class SecurityController
         }
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/updatestoragepoint")
-    public String updateStoragePoint(@RequestBody StoragePoint storagePoint)
-    {
-        UserDetails userDetails = jwtRequestFilter.getUserDetails();
-        String email = userDetails.getUsername();
-        Optional<Vendor> user = vendorRepository.findByEmail(email);
-        if(user.isEmpty())
-        {
-            return "You are not an authorised Vendor";
-        }
 
-        storagePointRepo.save(storagePoint);
-        Optional<StoragePoint> obj = storagePointRepo.findByCoordinates(storagePoint.getCoordinates());
-        if(obj.isEmpty())
-        {
-            return "Invalid StoragePoint";
-        }
-        storagePoint.setId(obj.get().getId());
-        storagePoint.setVendor(user.get());
-        storagePointRepo.save(storagePoint);
-        return "StoragePoint is updated successfully";
-    }
+
+
+
 
     @CrossOrigin(origins = "http://localhost:8100")
     @RequestMapping(value = "/login", method = RequestMethod.POST)

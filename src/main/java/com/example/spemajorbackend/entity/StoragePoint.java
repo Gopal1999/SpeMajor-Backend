@@ -194,4 +194,26 @@ public class StoragePoint
     public void setVendor(Vendor vendor) {
         this.vendor = vendor;
     }
+
+    @Override
+    public String toString() {
+        return "StoragePoint{" +
+                "storagepoint_id=" + storagepoint_id +
+                ", id='" + id + '\'' +
+                ", alias='" + alias + '\'' +
+                ", name='" + name + '\'' +
+                ", image_url='" + image_url + '\'' +
+                ", is_closed=" + is_closed +
+                ", rating=" + rating +
+                ", coordinates=" + coordinates +
+                ", price='" + price + '\'' +
+                ", location=" + location +
+                ", phone='" + phone + '\'' +
+                ", display_phone='" + display_phone + '\'' +
+                ", distance=" + distance +
+                ", photos=" + photos +
+                ", reviews=" + reviews +
+                ", vendor=" + vendor +
+                '}';
+    }
 }
