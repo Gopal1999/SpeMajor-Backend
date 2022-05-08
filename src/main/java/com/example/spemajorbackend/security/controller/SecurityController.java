@@ -115,7 +115,16 @@ public class SecurityController
 
 
 
-
+    @PutMapping("/update_storage_point")
+    public String updateStoragePoint(@RequestBody StoragePoint storagePoint)
+    {
+        StoragePoint storedStoragePoint = storagePointRepo.findById(storagePoint.getId());
+        storedStoragePoint.setName(storagePoint.getName());
+        storedStoragePoint.setPhone(storagePoint.getPhone());
+        storedStoragePoint.setPrice(storagePoint.getPrice());
+        storagePointRepo.save(storagePoint);
+        return "Success";
+    }
 
     @CrossOrigin(origins = "http://localhost:8100")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
