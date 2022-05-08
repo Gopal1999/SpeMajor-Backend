@@ -7,7 +7,9 @@ services:
     image: coolgopalgoyal/majorprojectbackend:latest
     container_name: backend-server
     environment:
-      - DATABASE_HOST=dbserver
+      - MYSQL_HOST=dbserver
+      - MYSQL_PORT=3306
+      - MYSQL_USER=root
     ports:
        - "8081:8081"
     depends_on:
@@ -27,6 +29,8 @@ services:
     environment:
       - MYSQL_DATABASE=SpeMajordb
       - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=password
     ports:
       - "3308:3306"
     healthcheck:
@@ -34,7 +38,7 @@ services:
             timeout: 20s
             retries: 10  
     volumes:
-      - mysql-data:/var/lib/mysql12
+      - /home/gopal/Desktop/temp/db:/var/lib/mysql
     networks:
       - backendmysql
     restart: unless-stopped
