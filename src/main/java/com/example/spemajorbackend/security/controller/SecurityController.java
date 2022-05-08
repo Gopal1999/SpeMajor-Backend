@@ -111,27 +111,15 @@ public class SecurityController
         }
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/updatestoragepoint")
+    @PutMapping("/update_storage_point")
     public String updateStoragePoint(@RequestBody StoragePoint storagePoint)
     {
-        UserDetails userDetails = jwtRequestFilter.getUserDetails();
-        String email = userDetails.getUsername();
-        Optional<Vendor> user = vendorRepository.findByEmail(email);
-        if(user.isEmpty())
-        {
-            return "You are not an authorised Vendor";
-        }
-
+        StoragePoint storedStoragePoint = storagePointRepo.findById(storagePoint.getId());
+        storedStoragePoint.setName(storagePoint.getName());
+        storedStoragePoint.setPhone(storagePoint.getPhone());
+        storedStoragePoint.setPrice(storagePoint.getPrice());
         storagePointRepo.save(storagePoint);
-        Optional<StoragePoint> obj = storagePointRepo.findByCoordinates(storagePoint.getCoordinates());
-        if(obj.isEmpty())
-        {
-            return "Invalid StoragePoint";
-        }
-        storagePoint.setId(obj.get().getId());
-        storagePoint.setVendor(user.get());
-        storagePointRepo.save(storagePoint);
-        return "StoragePoint is updated successfully";
+        return "Success";
     }
 
     @CrossOrigin(origins = "http://localhost:8100")

@@ -6,9 +6,9 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Coordinates
 {
-    @Column(nullable = false)
+    @Column
     private double latitude;
-    @Column(nullable = false)
+    @Column
     private double longitude;
 
     public double getLatitude() {
