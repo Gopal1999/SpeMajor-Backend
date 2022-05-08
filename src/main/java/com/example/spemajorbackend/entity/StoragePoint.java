@@ -15,8 +15,6 @@ public class StoragePoint
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int storagepoint_id;
 
-    @Column(nullable = false)
-    private String id;
 
     private String alias;
     private String name;
@@ -52,8 +50,7 @@ public class StoragePoint
 
     }
 
-    public StoragePoint(String id, String alias, String name, String image_url, boolean is_closed, float rating, Coordinates coordinates, String price, Location location, String phone, String display_phone, double distance) {
-        this.id = id;
+    public StoragePoint(String alias, String name, String image_url, boolean is_closed, float rating, Coordinates coordinates, String price, Location location, String phone, String display_phone, double distance) {
         this.alias = alias;
         this.name = name;
         this.image_url = image_url;
@@ -67,13 +64,6 @@ public class StoragePoint
         this.distance = distance;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getAlias() {
         return alias;
@@ -199,7 +189,6 @@ public class StoragePoint
     public String toString() {
         return "StoragePoint{" +
                 "storagepoint_id=" + storagepoint_id +
-                ", id='" + id + '\'' +
                 ", alias='" + alias + '\'' +
                 ", name='" + name + '\'' +
                 ", image_url='" + image_url + '\'' +

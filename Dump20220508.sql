@@ -1,13 +1,13 @@
--- MySQL dump 10.13  Distrib 8.0.28, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.29, for Linux (x86_64)
 --
--- Host: localhost    Database: SpeMajordb
+-- Host: 127.0.0.1    Database: SpeMajordb
 -- ------------------------------------------------------
--- Server version	8.0.28-0ubuntu0.20.04.3
+-- Server version	8.0.29-0ubuntu0.20.04.3
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8mb4 */;
+/*!50503 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -37,8 +37,32 @@ CREATE TABLE `Photo` (
 
 LOCK TABLES `Photo` WRITE;
 /*!40000 ALTER TABLE `Photo` DISABLE KEYS */;
-INSERT INTO `Photo` VALUES (1,'https://www.dropbox.com/s/d4jpvet7f6mcrwg/G1.jpg?dl=0',1),(2,'https://www.dropbox.com/s/8zx84ngamzx0ru2/G2.jpg?dl=0',1),(3,'https://www.dropbox.com/s/s6imntx7u6ury0h/G3.jpg?dl=0',1),(4,'https://www.dropbox.com/s/olpqxxdwapnd0oz/H1.jpg?dl=0',2),(5,'https://www.dropbox.com/s/o8vsn055dsh4p8m/H2.jpg?dl=0',2),(6,'https://www.dropbox.com/s/rvs40ctos8r4h7g/H3.jpg?dl=0',2),(7,'https://www.dropbox.com/s/wz7bvxbmd097sf8/I1.webp?dl=0',3),(8,'https://www.dropbox.com/s/lj56smhmsk05w6m/I2.webp?dl=0',3),(9,'https://www.dropbox.com/s/8tqvon662neujdi/I3.webp?dl=0',3),(10,'https://www.dropbox.com/s/qrdv837q5zcqimp/J1.webp?dl=0',4),(11,'https://www.dropbox.com/s/xmhiz3xxe4maq8j/J2.webp?dl=0',4),(12,'https://www.dropbox.com/s/cncmtjltldc477a/J3.jpg?dl=0',4),(13,'https://www.dropbox.com/s/nqaf9mbann4owum/K1.webp?dl=0',5),(14,'https://www.dropbox.com/s/i8re9ruzhw0qvhu/K2.webp?dl=0',5),(15,'https://www.dropbox.com/s/m0ahad3mdonbuff/K3.jpg?dl=0',5);
+INSERT INTO `Photo` VALUES (1,'https://www.dropbox.com/s/d4jpvet7f6mcrwg/G1.jpg?raw=1',1),(2,'https://www.dropbox.com/s/8zx84ngamzx0ru2/G2.jpg?raw=1',1),(3,'https://www.dropbox.com/s/s6imntx7u6ury0h/G3.jpg?raw=1',1),(4,'https://www.dropbox.com/s/olpqxxdwapnd0oz/H1.jpg?raw=1',2),(5,'https://www.dropbox.com/s/o8vsn055dsh4p8m/H2.jpg?raw=1',2),(6,'https://www.dropbox.com/s/rvs40ctos8r4h7g/H3.jpg?raw=1',2),(7,'https://www.dropbox.com/s/wz7bvxbmd097sf8/I1.webp?raw=1',3),(8,'https://www.dropbox.com/s/lj56smhmsk05w6m/I2.webp?raw=1',3),(9,'https://www.dropbox.com/s/8tqvon662neujdi/I3.webp?raw=1',3),(10,'https://www.dropbox.com/s/qrdv837q5zcqimp/J1.webp?raw=1',4),(11,'https://www.dropbox.com/s/xmhiz3xxe4maq8j/J2.webp?raw=1',4),(12,'https://www.dropbox.com/s/cncmtjltldc477a/J3.jpg?raw=1',4),(13,'https://www.dropbox.com/s/nqaf9mbann4owum/K1.webp?raw=1',5),(14,'https://www.dropbox.com/s/i8re9ruzhw0qvhu/K2.webp?raw=1',5),(15,'https://www.dropbox.com/s/m0ahad3mdonbuff/K3.jpg?raw=1',5);
 /*!40000 ALTER TABLE `Photo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Region`
+--
+
+DROP TABLE IF EXISTS `Region`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Region` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `latitude` double NOT NULL,
+  `longitude` double NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Region`
+--
+
+LOCK TABLES `Region` WRITE;
+/*!40000 ALTER TABLE `Region` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Region` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -94,7 +118,7 @@ CREATE TABLE `ServiceConsumer` (
 
 LOCK TABLES `ServiceConsumer` WRITE;
 /*!40000 ALTER TABLE `ServiceConsumer` DISABLE KEYS */;
-INSERT INTO `ServiceConsumer` VALUES (1,'U1','','Rakesh Sharma'),(2,'U2','','Vikas Garg'),(3,'U3','','Bhawna Beniwal'),(4,'U4','','Rohit Ranjan'),(5,'U5','','Anamika Kumari'),(6,'U6','','Keshav Kumar'),(7,'U7','','Vandana Gupta'),(8,'U8','','Mohit Jain'),(9,'U9','','Kashish Taneja'),(10,'U10','','Shobhit Mittal');
+INSERT INTO `ServiceConsumer` VALUES (1,'U1','https://www.dropbox.com/s/4p5y7lp9qnjoowg/user_placeholder.jpg?raw=1','Rakesh Sharma'),(2,'U2','https://www.dropbox.com/s/4p5y7lp9qnjoowg/user_placeholder.jpg?raw=1','Vikas Garg'),(3,'U3','https://www.dropbox.com/s/4p5y7lp9qnjoowg/user_placeholder.jpg?raw=1','Bhawna Beniwal'),(4,'U4','https://www.dropbox.com/s/4p5y7lp9qnjoowg/user_placeholder.jpg?raw=1','Rohit Ranjan'),(5,'U5','https://www.dropbox.com/s/4p5y7lp9qnjoowg/user_placeholder.jpg?raw=1','Anamika Kumari'),(6,'U6','https://www.dropbox.com/s/4p5y7lp9qnjoowg/user_placeholder.jpg?raw=1','Keshav Kumar'),(7,'U7','https://www.dropbox.com/s/4p5y7lp9qnjoowg/user_placeholder.jpg?raw=1','Vandana Gupta'),(8,'U8','https://www.dropbox.com/s/4p5y7lp9qnjoowg/user_placeholder.jpg?raw=1','Mohit Jain'),(9,'U9','https://www.dropbox.com/s/4p5y7lp9qnjoowg/user_placeholder.jpg?raw=1','Kashish Taneja'),(10,'U10','https://www.dropbox.com/s/4p5y7lp9qnjoowg/user_placeholder.jpg?raw=1','Shobhit Mittal');
 /*!40000 ALTER TABLE `ServiceConsumer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -108,8 +132,8 @@ DROP TABLE IF EXISTS `StoragePoint`;
 CREATE TABLE `StoragePoint` (
   `storagepoint_id` int NOT NULL AUTO_INCREMENT,
   `alias` varchar(255) DEFAULT NULL,
-  `latitude` double NOT NULL,
-  `longitude` double NOT NULL,
+  `latitude` double DEFAULT NULL,
+  `longitude` double DEFAULT NULL,
   `display_phone` varchar(255) DEFAULT NULL,
   `distance` double NOT NULL,
   `id` varchar(255) DEFAULT NULL,
@@ -127,8 +151,10 @@ CREATE TABLE `StoragePoint` (
   `phone` varchar(255) DEFAULT NULL,
   `price` varchar(255) DEFAULT NULL,
   `rating` float NOT NULL,
-  PRIMARY KEY (`storagepoint_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `vendor_id` int DEFAULT NULL,
+  PRIMARY KEY (`storagepoint_id`),
+  KEY `FK1qpkvly5j5fqjcxh8g6xtdiah` (`vendor_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -137,8 +163,35 @@ CREATE TABLE `StoragePoint` (
 
 LOCK TABLES `StoragePoint` WRITE;
 /*!40000 ALTER TABLE `StoragePoint` DISABLE KEYS */;
-INSERT INTO `StoragePoint` VALUES (1,'Orange Self-Storage Solutions',12.842976,77.665322,'+91-8433136298',0,'XzUW9MvEGOFs9_aNj11j2Q','https://www.dropbox.com/s/d4jpvet7f6mcrwg/G1.jpg?dl=0',_binary '','2nd Cross Road, Neeladri Nagar','Electronics City Phase 1, Electronic City','','Bengaluru','India','2nd Cross Road, Neeladri Nagar,Bengaluru, Karnataka 560100','Karnataka','560100','Orange Self-Storage Solutions','8433136298','200',4),(2,'Mishra\'s Residence',12.842976,77.665322,'+91-8433136231',0,'XzUW9MvEGOFs9_aNj11j2R','https://www.dropbox.com/s/olpqxxdwapnd0oz/H1.jpg?dl=0',_binary '\0','RMV8+44P','Electronics City Phase 1, Electronic City','','Bengaluru','India','RMV8+44P,Bengaluru, Karnataka 560100','Karnataka','560100','Mishra\'s Residence','8433136231','250',4),(3,'Kapoor and Sons',12.842411,77.66352,'+91-9434136231',0,'XzUW9MvEGOFs9_aNj11j2S','https://www.dropbox.com/s/wz7bvxbmd097sf8/I1.webp?dl=0',_binary '','4th Cross Rd','Electronics City Phase 1, Electronic City','','Bengaluru','India','4th Cross Rd,Bengaluru, Karnataka 560100','Karnataka','560100','Kapoor and Sons','9434136231','250',5),(4,'Yellow Self-Storage Solutions',12.843467,77.660452,'+91-9434136232',0,'XzUW9MvEGOFs9_aNj11j2T','https://www.dropbox.com/s/qrdv837q5zcqimp/J1.webp?dl=0',_binary '','4th Cross Rd','Electronics City Phase 1, Electronic City','','Bengaluru','India','4th Cross Rd,Bengaluru, Karnataka 560100','Karnataka','560100','Yellow Self-Storage Solutions','9434136232','300',4),(5,'Hitesh Medicals and General Stores',12.845538,77.661546,'+91-9534136232',0,'XzUW9MvEGOFs9_aNj11j2U','https://www.dropbox.com/s/nqaf9mbann4owum/K1.webp?dl=0',_binary '\0','Near Siemens','Electronics City Phase 1, Electronic City','','Bengaluru','India','Near Siemens,Bengaluru, Karnataka 560100','Karnataka','560100','Hitesh Medicals and General Stores','9534136232','200',3);
+INSERT INTO `StoragePoint` VALUES (1,'Orange Self-Storage Solutions',12.842976,77.665322,'+91-8433136298',0,'XzUW9MvEGOFs9_aNj11j2Q','https://www.dropbox.com/s/d4jpvet7f6mcrwg/G1.jpg?raw=1',_binary '\0','2nd Cross Road, Neeladri Nagar','Electronics City Phase 1, Electronic City','','Bengaluru','India','2nd Cross Road, Neeladri Nagar,Bengaluru, Karnataka 560100','Karnataka','560100','Orange Self-Storage Solutions','8433136298','200',4,1),(2,'Mishra\'s Residence',12.842976,77.665322,'+91-8433136231',0,'XzUW9MvEGOFs9_aNj11j2R','https://www.dropbox.com/s/olpqxxdwapnd0oz/H1.jpg?raw=1',_binary '\0','RMV8+44P','Electronics City Phase 1, Electronic City','','Bengaluru','India','RMV8+44P,Bengaluru, Karnataka 560100','Karnataka','560100','Mishra\'s Residence','8433136231','250',4,2),(3,'Kapoor and Sons',12.842411,77.66352,'+91-9434136231',0,'XzUW9MvEGOFs9_aNj11j2S','https://www.dropbox.com/s/wz7bvxbmd097sf8/I1.webp?raw=1',_binary '\0','4th Cross Rd','Electronics City Phase 1, Electronic City','','Bengaluru','India','4th Cross Rd,Bengaluru, Karnataka 560100','Karnataka','560100','Kapoor and Sons','9434136231','250',5,1),(4,'Yellow Self-Storage Solutions',12.843467,77.660452,'+91-9434136232',0,'XzUW9MvEGOFs9_aNj11j2T','https://www.dropbox.com/s/qrdv837q5zcqimp/J1.webp?raw=1',_binary '\0','4th Cross Rd','Electronics City Phase 1, Electronic City','','Bengaluru','India','4th Cross Rd,Bengaluru, Karnataka 560100','Karnataka','560100','Yellow Self-Storage Solutions','9434136232','300',4,2),(5,'Hitesh Medicals and General Stores',12.845538,77.661546,'+91-9534136232',0,'XzUW9MvEGOFs9_aNj11j2U','https://www.dropbox.com/s/nqaf9mbann4owum/K1.webp?raw=1',_binary '\0','Near Siemens','Electronics City Phase 1, Electronic City','','Bengaluru','India','Near Siemens,Bengaluru, Karnataka 560100','Karnataka','560100','zHitesh Medicals and General Stores','9534136232','300',3,3),(6,NULL,NULL,NULL,NULL,0,'XzUW9MvEGOFs9_aNj11j2U',NULL,_binary '\0',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'zHitesh Medicals and General Stores','9534136232','300',0,NULL);
 /*!40000 ALTER TABLE `StoragePoint` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Vendor`
+--
+
+DROP TABLE IF EXISTS `Vendor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Vendor` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) NOT NULL,
+  `mobile` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Vendor`
+--
+
+LOCK TABLES `Vendor` WRITE;
+/*!40000 ALTER TABLE `Vendor` DISABLE KEYS */;
+INSERT INTO `Vendor` VALUES (1,'test1@gmail.com','9876543210','password','ADMIN'),(2,'test2@gmail.com','9876543210','password','ADMIN'),(3,'test3@gmail.com','9876543210','password','ADMIN'),(4,'test4@gmail.com','9876543210','password','ADMIN');
+/*!40000 ALTER TABLE `Vendor` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -150,4 +203,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-26 15:09:18
+-- Dump completed on 2022-05-08 14:50:29

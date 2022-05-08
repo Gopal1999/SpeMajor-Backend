@@ -12,6 +12,7 @@
     <artifactId>SpeMajor-backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>SpeMajor-backend</name>
+    <packaging>war</packaging>
     <description>SpeMajor-backend</description>
     <properties>
         <java.version>11</java.version>
@@ -73,6 +74,7 @@
 
     <build>
         <plugins>
+
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
