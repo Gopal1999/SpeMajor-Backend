@@ -29,6 +29,8 @@ services:
     environment:
       - MYSQL_DATABASE=SpeMajordb
       - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=password
     ports:
       - "3308:3306"
     healthcheck:
