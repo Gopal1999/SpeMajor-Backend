@@ -56,12 +56,8 @@ public class SecurityController
         }
     }
 
-<<<<<<< HEAD
     @RequestMapping("/getall")
-=======
     @CrossOrigin(origins = "http://localhost:8100")
-    @RequestMapping("/id/getall")
->>>>>>> ae77951b1f35ee33371cb9e1c582f27fb54b1c9b
     public List<StoragePoint> getAllStoragePoints()
     {
         UserDetails userDetails = jwtRequestFilter.getUserDetails();
@@ -72,10 +68,6 @@ public class SecurityController
         {
             return new ArrayList<>();
         }
-<<<<<<< HEAD
-
-=======
->>>>>>> ae77951b1f35ee33371cb9e1c582f27fb54b1c9b
         List<StoragePoint> list =  storagePointRepo.findByVendorId(user.get().getId());
         List<StoragePoint> result = new ArrayList<>();
         for(StoragePoint storagePoint: list)
