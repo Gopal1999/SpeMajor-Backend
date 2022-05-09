@@ -87,7 +87,9 @@ public class SecurityControllerService
     {
         StoragePoint storedStoragePoint = storagePointRepo.findByStoragepoint_id(storagePoint.getStoragepoint_id());
         storedStoragePoint.setName(storagePoint.getName());
+        storedStoragePoint.setAlias(storagePoint.getName());
         storedStoragePoint.setPhone(storagePoint.getPhone());
+        storedStoragePoint.setDisplay_phone("+91-" + storagePoint.getPhone());
         storedStoragePoint.setPrice(storagePoint.getPrice());
         storagePointRepo.save(storedStoragePoint);
         System.out.println(storedStoragePoint);

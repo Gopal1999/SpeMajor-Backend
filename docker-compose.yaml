@@ -38,7 +38,7 @@ services:
             timeout: 20s
             retries: 10  
     volumes:
-      - /home/gopal/Desktop/temp/db:/var/lib/mysql
+      - /home/gopal/Desktop/SpeMajor-backend/backup.sql:/var/lib/containerbackup.sql
     networks:
       - backendmysql
     restart: unless-stopped

@@ -35,7 +35,7 @@ public class StoragePoint
     private String display_phone;
     private double distance;
 
-    @OneToMany(mappedBy = "storagepoint")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "storagepoint")
     private List<Photo> photos = new ArrayList<>();
 
     @OneToMany(mappedBy = "storagepoint")

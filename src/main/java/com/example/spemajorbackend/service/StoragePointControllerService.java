@@ -43,6 +43,7 @@ public class StoragePointControllerService
             double distance = R * c * 1000; // convert to meters
 
             if(distance<=radius) {
+                System.out.println(distance);
                 obj.setDistance(distance);
                 result.add(obj);
             }
