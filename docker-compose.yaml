@@ -97,6 +97,6 @@ networks:
     driver: bridge
 
 volumes:
-  /home/gopal/Desktop/SpeMajor-backend/backupdata:
-  /home/gopal/Desktop/SpeMajor-backend/elastic_data:
+  backupdata:
+  elastic_data:
 
