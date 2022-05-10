@@ -49,7 +49,7 @@ services:
     container_name: elasticsearch
     restart: always
     volumes:
-      - /home/gopal/Desktop/SpeMajor-backend/elastic_data:/usr/share/elasticsearch/data/
+      - /home/gopal/Desktop/SpeMajor-backend/elastic_data:/var/lib/elasticsearch/data/
     environment:
       ES_JAVA_OPTS: "-Xmx256m -Xms256m"
       discovery.type: single-node
@@ -97,6 +97,6 @@ networks:
     driver: bridge
 
 volumes:
-  mysql-data:
-    driver: local
+  /home/gopal/Desktop/SpeMajor-backend/backupdata:
+  /home/gopal/Desktop/SpeMajor-backend/elastic_data:
 
