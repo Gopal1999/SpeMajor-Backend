@@ -30,6 +30,7 @@ public class SecurityController
     @Autowired
     SecurityControllerService securityControllerService;
 
+    @CrossOrigin(origins = "http://localhost:8100")
     @RequestMapping(method = RequestMethod.POST, value = "/signup")
     public String register(@RequestBody Vendor user)
     {
@@ -73,7 +74,7 @@ public class SecurityController
 
 
 
-
+    @CrossOrigin(origins = "http://localhost:8100")
     @PutMapping("/update_storage_point")
     public String updateStoragePoint(@RequestBody StoragePoint storagePoint)
     {
