@@ -1,4 +1,5 @@
 package com.example.spemajorbackend.security.controller;
+import com.example.spemajorbackend.SpeMajorBackendApplication;
 import com.example.spemajorbackend.entity.StoragePoint;
 import com.example.spemajorbackend.entity.Vendor;
 import com.example.spemajorbackend.repository.StoragePointRepo;
@@ -8,6 +9,8 @@ import com.example.spemajorbackend.security.entity.AuthenticateResponse;
 import com.example.spemajorbackend.security.filters.JwtRequestFilter;
 import com.example.spemajorbackend.security.util.jwtutil;
 import com.example.spemajorbackend.service.SecurityControllerService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
@@ -27,6 +30,8 @@ import java.util.*;
 @RequestMapping("/vendor")
 public class SecurityController
 {
+    private static final Logger logger = LogManager.getLogger(SpeMajorBackendApplication.class);
+
     @Autowired
     SecurityControllerService securityControllerService;
 
@@ -34,6 +39,7 @@ public class SecurityController
     @RequestMapping(method = RequestMethod.POST, value = "/signup")
     public String register(@RequestBody Vendor user)
     {
+        logger.info("New Vendor is getting registered");
         return securityControllerService.registerVendor(user);
     }
 
@@ -41,6 +47,7 @@ public class SecurityController
     @CrossOrigin(origins = "http://localhost:8100")
     public List<StoragePoint> getAllStoragePoints()
     {
+        logger.info("Vendor is fetching its all StoragePoints");
         return securityControllerService.getAllSP();
     }
 
@@ -78,6 +85,7 @@ public class SecurityController
     @PutMapping("/update_storage_point")
     public String updateStoragePoint(@RequestBody StoragePoint storagePoint)
     {
+        logger.info("Vendor is updating its storagepoint");
         return securityControllerService.updateSP(storagePoint);
     }
 
@@ -85,6 +93,7 @@ public class SecurityController
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody Vendor authenticateRequest) throws Exception
     {
+        logger.info("Vendor is logging in ...");
         return securityControllerService.authenticateVendor(authenticateRequest);
     }
 }
