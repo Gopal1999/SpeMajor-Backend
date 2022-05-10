@@ -9,10 +9,7 @@ import com.example.spemajorbackend.repository.ReviewRepo;
 import com.example.spemajorbackend.repository.StoragePointRepo;
 import com.example.spemajorbackend.service.StoragePointControllerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,18 +27,21 @@ public class StoragePointController
     @Autowired
     StoragePointControllerService storagePointControllerService;
 
+    @CrossOrigin(origins = "http://localhost:8100")
     @RequestMapping(value = "/getall")
     public StoragePointWithRegion getNearBy(@RequestParam("latitude") Double latitude, @RequestParam("longitude") Double longitude, @RequestParam("radius") Integer radius)
     {
         return storagePointControllerService.getnearBySP(latitude, longitude, radius);
     }
 
+    @CrossOrigin(origins = "http://localhost:8100")
     @RequestMapping("/{id}")
     public StoragePoint getStoragePoint(@PathVariable Integer id)
     {
         return storagePointControllerService.getSP(id);
     }
 
+    @CrossOrigin(origins = "http://localhost:8100")
     @RequestMapping("/{id}/reviews")
     public List<Review> getReviews(@PathVariable Integer id)
     {
