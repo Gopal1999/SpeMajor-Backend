@@ -107,4 +107,5 @@ networks:
 volumes:
   backupdata:
   logfile:
-#  elastic_data:
+  elastic_data:
+  logstash:
