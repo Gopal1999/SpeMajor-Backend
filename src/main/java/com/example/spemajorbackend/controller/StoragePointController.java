@@ -31,7 +31,8 @@ public class StoragePointController
     @Autowired
     StoragePointControllerService storagePointControllerService;
 
-    @CrossOrigin(origins = "http://localhost:8100")
+
+    @CrossOrigin(origins = "http://172.30.0.4:8100")
     @RequestMapping(value = "/getall")
     public StoragePointWithRegion getNearBy(@RequestParam("latitude") Double latitude, @RequestParam("longitude") Double longitude, @RequestParam("radius") Integer radius)
     {
@@ -40,7 +41,8 @@ public class StoragePointController
 
     }
 
-    @CrossOrigin(origins = "http://localhost:8100")
+    //@CrossOrigin(origins = "http://localhost:8100")
+    @CrossOrigin(origins = "http://172.30.0.4:8100")
     @RequestMapping("/{id}")
     public StoragePoint getStoragePoint(@PathVariable Integer id)
     {
@@ -48,7 +50,8 @@ public class StoragePointController
         return storagePointControllerService.getSP(id);
     }
 
-    @CrossOrigin(origins = "http://localhost:8100")
+    //@CrossOrigin(origins = "http://localhost:8100")
+    @CrossOrigin(origins = "http://172.30.0.4:8100")
     @RequestMapping("/{id}/reviews")
     public List<Review> getReviews(@PathVariable Integer id)
     {

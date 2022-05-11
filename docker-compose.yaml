@@ -3,6 +3,20 @@ version: "3"
 services:
   # -------------------- NeighbourStorage APIs Express Container -------------------- #
 
+  Frontend-server:
+    image: coolgopalgoyal/majorprojectfrontend
+#    image: demo:latest
+    container_name: frontend-server
+    environment:
+      - REACT_APP_API_URL=172.30.0.3
+    ports:
+      - "8100:8100"
+    depends_on:
+      - Backend-server
+    networks:
+      - backendmysql
+    restart: unless-stopped
+
   Backend-server:
     image: coolgopalgoyal/majorprojectbackend:latest
     container_name: backend-server
@@ -14,10 +28,8 @@ services:
        - "8081:8081"
     depends_on:
        - dbserver
-#       - dbserver:
-#         condition: service_healthy
-#     entrypoint: wait-for-it.sh dbserver:3306 -- echo "dbserver is up"
-
+    volumes:
+      - /home/gopal/Desktop/SpeMajor-backend/logfile:/logs
     networks:
       - backendmysql
     restart: unless-stopped
@@ -34,69 +46,65 @@ services:
       - MYSQL_PASSWORD=password
     ports:
       - "3308:3306"
-#    healthcheck:
-#            test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
-#            timeout: 20s
-#            retries: 10
     volumes:
-      - /home/gopal/Desktop/SpeMajor-backend/backupdata:/var/lib/mysqldata
+      - /home/gopal/Desktop/SpeMajor-backend/backupdata:/var/lib/mysql
     networks:
       - backendmysql
     restart: unless-stopped
 
-  Elasticsearch:
-    image: elasticsearch:7.16.2
-    container_name: elasticsearch
-    restart: always
-    volumes:
-      - /home/gopal/Desktop/SpeMajor-backend/elastic_data:/usr/share/elasticsearch/data/
-    environment:
-      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
-      discovery.type: single-node
-    ports:
-      - '9200:9200'
-      - '9300:9300'
-
-    depends_on:
-      - Backend-server
-
-    networks:
-      - backendmysql
-
-  Logstash:
-      image: logstash:7.16.2
-      container_name: logstash
-      restart: always
-      volumes:
-        - ./logstash/:/logstash_dir
-      command: logstash -f /logstash.conf
-      depends_on:
-        - Elasticsearch
-      ports:
-        - '9600:9600'
-      environment:
-        LS_JAVA_OPTS: "-Xmx256m -Xms256m"
-      networks:
-        - backendmysql
-
-  Kibana:
-      image: kibana:7.16.2
-      container_name: kibana
-      restart: always
-      ports:
-        - '5601:5601'
-      environment:
-        - ELASTICSEARCH_URL=http://elasticsearch:9200
-      depends_on:
-        - Elasticsearch
-      networks:
-        - backendmysql
+#  Elasticsearch:
+#    image: elasticsearch:7.16.2
+#    container_name: elasticsearch
+#    restart: always
+#    volumes:
+#      - elastic_data:/var/lib/elasticsearch/data/
+#    environment:
+#      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+#      discovery.type: single-node
+#    ports:
+#      - '9200:9200'
+#      - '9300:9300'
+#
+#    depends_on:
+#      - Backend-server
+#
+#    networks:
+#      - backendmysql
+#
+#  Logstash:
+#      image: logstash:7.16.2
+#      container_name: logstash
+#      restart: always
+#      volumes:
+#        - ./logstash/:/logstash_dir
+#      command: logstash -f /logstash.conf
+#      depends_on:
+#        - Elasticsearch
+#      ports:
+#        - '9600:9600'
+#      environment:
+#        LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+#      networks:
+#        - backendmysql
+#
+#  Kibana:
+#      image: kibana:7.16.2
+#      container_name: kibana
+#      restart: always
+#      ports:
+#        - '5601:5601'
+#      environment:
+#        - ELASTICSEARCH_URL=http://elasticsearch:9200
+#      depends_on:
+#        - Elasticsearch
+#      networks:
+#        - backendmysql
 
 networks:
   backendmysql:
     driver: bridge
 
 volumes:
-  mysql-data:
-    driver: local
-
+  backupdata:
+  logfile:
+#  elastic_data:
