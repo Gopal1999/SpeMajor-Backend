@@ -4,7 +4,7 @@ services:
   # -------------------- NeighbourStorage APIs Express Container -------------------- #
 
   Frontend-server:
-    image: coolgopalgoyal/majorprojectfrontend
+    image: abhijain614/major-frontend:latest
 #    image: demo:latest
     container_name: frontend-server
     environment:
@@ -18,7 +18,7 @@ services:
     restart: unless-stopped
 
   Backend-server:
-    image: coolgopalgoyal/majorprojectbackend:latest
+    image: abhijain614/major-backend:latest
     container_name: backend-server
     environment:
       - MYSQL_HOST=dbserver
@@ -47,7 +47,7 @@ services:
     ports:
       - "3308:3306"
     volumes:
-      - /home/gopal/Desktop/backupdata:/var/lib/mysql
+      - /home/abhi/Desktop/backupdata:/var/lib/mysql
     networks:
       - backendmysql
     restart: unless-stopped
