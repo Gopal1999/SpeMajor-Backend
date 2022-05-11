@@ -19,6 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/storagepoint")
+@CrossOrigin(origins = {"*"})
 public class StoragePointController
 {
     private static final Logger logger = LogManager.getLogger(SpeMajorBackendApplication.class);
@@ -32,7 +33,7 @@ public class StoragePointController
     StoragePointControllerService storagePointControllerService;
 
 
-    @CrossOrigin(origins = "http://172.30.0.4:8100")
+//    @CrossOrigin(origins = "http://172.30.0.4:8100")
     @RequestMapping(value = "/getall")
     public StoragePointWithRegion getNearBy(@RequestParam("latitude") Double latitude, @RequestParam("longitude") Double longitude, @RequestParam("radius") Integer radius)
     {
@@ -42,7 +43,7 @@ public class StoragePointController
     }
 
     //@CrossOrigin(origins = "http://localhost:8100")
-    @CrossOrigin(origins = "http://172.30.0.4:8100")
+//    @CrossOrigin(origins = "http://172.30.0.4:8100")
     @RequestMapping("/{id}")
     public StoragePoint getStoragePoint(@PathVariable Integer id)
     {
@@ -51,7 +52,7 @@ public class StoragePointController
     }
 
     //@CrossOrigin(origins = "http://localhost:8100")
-    @CrossOrigin(origins = "http://172.30.0.4:8100")
+//    @CrossOrigin(origins = "http://172.30.0.4:8100")
     @RequestMapping("/{id}/reviews")
     public List<Review> getReviews(@PathVariable Integer id)
     {

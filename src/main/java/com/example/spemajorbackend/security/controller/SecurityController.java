@@ -28,6 +28,7 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/vendor")
+@CrossOrigin(origins = {"*"})
 public class SecurityController
 {
     private static final Logger logger = LogManager.getLogger(SpeMajorBackendApplication.class);
@@ -36,7 +37,7 @@ public class SecurityController
     SecurityControllerService securityControllerService;
 
     //@CrossOrigin(origins = "http://localhost:8100")
-    @CrossOrigin(origins = "http://172.30.0.4:8100")
+//    @CrossOrigin(origins = "http://172.30.0.4:8100")
     @RequestMapping(method = RequestMethod.POST, value = "/signup")
     public String register(@RequestBody Vendor user)
     {
@@ -46,7 +47,7 @@ public class SecurityController
 
     @RequestMapping("/getall")
     //@CrossOrigin(origins = "http://localhost:8100")
-    @CrossOrigin(origins = "http://172.30.0.4:8100")
+//    @CrossOrigin(origins = "http://172.30.0.4:8100")
     public List<StoragePoint> getAllStoragePoints()
     {
         logger.info("Vendor is fetching its all StoragePoints");
@@ -84,7 +85,7 @@ public class SecurityController
 
 
     //@CrossOrigin(origins = "http://localhost:8100")
-    @CrossOrigin(origins = "http://172.30.0.4:8100")
+//    @CrossOrigin(origins = "http://172.30.0.4:8100")
     @PutMapping("/update_storage_point")
     public String updateStoragePoint(@RequestBody StoragePoint storagePoint)
     {
@@ -94,7 +95,7 @@ public class SecurityController
 
     //@CrossOrigin(origins = "http://localhost:8100")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    @CrossOrigin(origins = "http://172.30.0.4:8100")
+//    @CrossOrigin(origins = "http://172.30.0.4:8100")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody Vendor authenticateRequest) throws Exception
     {
         logger.info("Vendor is logging in ...");
