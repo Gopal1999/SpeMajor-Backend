@@ -29,7 +29,7 @@ services:
     depends_on:
        - dbserver
     volumes:
-      - ./logstash/:/var/lib
+      - ./lostash:/var/lib
     networks:
       - backendmysql
     restart: unless-stopped
@@ -76,7 +76,7 @@ services:
       container_name: logstash
       restart: always
       volumes:
-        - ./logstash/:/logstash_dir
+        - ./logstash:/logstash_dir
       command: logstash -f /logstash.conf
       depends_on:
         - Elasticsearch
