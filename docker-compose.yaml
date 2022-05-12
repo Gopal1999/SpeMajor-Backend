@@ -76,8 +76,8 @@ services:
       container_name: logstash
       restart: always
       volumes:
-        - ./logstash:/logstash_dir
-      command: logstash -f /logstash.conf
+        - ./logstash:/usr/share/losgstash/pipeline
+      command: logstash -f /usr/share/logstash/pipeline/myapp.log
       depends_on:
         - Elasticsearch
       ports:
