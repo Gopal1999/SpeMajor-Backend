@@ -4,7 +4,7 @@ services:
   # -------------------- NeighbourStorage APIs Express Container -------------------- #
 
   Frontend-server:
-    image: abhijain614/major-frontend:latest
+    image: abhijain614/final-frontend:latest
 #    image: demo:latest
     container_name: frontend-server
     environment:
@@ -18,7 +18,7 @@ services:
     restart: unless-stopped
 
   Backend-server:
-    image: abhijain614/major-backend:latest
+    image: abhijain614/final-backend:latest
     container_name: backend-server
     environment:
       - MYSQL_HOST=dbserver
