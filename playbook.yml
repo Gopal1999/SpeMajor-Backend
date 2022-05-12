@@ -18,6 +18,10 @@
 
 #    - name: remove docker images
 #      shell: docker image rm -f abhijain614/final-backend:latest
+   - name: copy docker-compose file
+     copy:
+      src: docker-compose.yaml
+      dest: docker-compose.yaml
 
    - name: running docker-compose
      shell: docker-compose -f docker-compose.yaml up -d
