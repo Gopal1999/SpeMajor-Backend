@@ -2,22 +2,22 @@
 - name: Pull docker images using Docker Compose
   hosts: all
   tasks:
-#    - name: pull docker image
-#      shell: docker pull abhijain614/final-frontend:latest
-#    - name: pull docker image
-#      shell: docker pull abhijain614/final-backend:latest
+   - name: pull docker image
+     shell: docker pull abhijain614/final-frontend:latest
+   - name: pull docker image
+     shell: docker pull abhijain614/final-backend:latest
 
-#    - name: remove stopped container
-#      shell: docker stop $(docker ps -a -q)
-#    - name: remove stopped container
-#      shell: docker rm $(docker ps -a -q)
-#      Next time se these 4 lines shall be uncommented
+   - name: remove stopped container
+     shell: docker stop $(docker ps -a -q)
+   - name: remove stopped container
+     shell: docker rm $(docker ps -a -q)
 
-#    - name: remove docker images
-#      shell: docker image rm -f abhijain614/final-backend:latest
-#
-#    - name: remove docker images
-#      shell: docker image rm -f abhijain614/final-backend:latest
 
-    - name: running docker-compose
-      shell: docker-compose -f docker-compose.yaml up -d
+   - name: remove docker images
+     shell: docker image rm -f abhijain614/final-backend:latest
+
+   - name: remove docker images
+     shell: docker image rm -f abhijain614/final-backend:latest
+
+   - name: running docker-compose
+     shell: docker-compose -f docker-compose.yaml up -d
