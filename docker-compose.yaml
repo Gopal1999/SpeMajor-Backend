@@ -4,11 +4,11 @@ services:
   # -------------------- NeighbourStorage APIs Express Container -------------------- #
 
   Frontend-server:
-    image: abhijain614/major-frontend:latest
+    image: coolgopalgoyal/majorprojectfrontend
 #    image: demo:latest
     container_name: frontend-server
     environment:
-      - REACT_APP_API_URL=172.18.0.3
+      - REACT_APP_API_URL=172.21.0.3
     ports:
       - "8100:8100"
     depends_on:
@@ -18,7 +18,7 @@ services:
     restart: unless-stopped
 
   Backend-server:
-    image: abhijain614/major-backend:latest
+    image: coolgopalgoyal/logstashtesting:latest
     container_name: backend-server
     environment:
       - MYSQL_HOST=dbserver
