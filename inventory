@@ -1,1 +1,1 @@
-172.16.131.59 ansible_user=gopal ansible_ssh_pass=Gopal000* ansible_sudo_pass=Gopal000*
+172.16.129.244 ansible_ssh_password=Abhi@1407 ansible_ssh_user=abhi

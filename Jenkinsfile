@@ -3,14 +3,14 @@ pipeline {
 	environment {
 	    MYSQL_HOST="localhost"
 	    MYSQL_PORT=3306
-	    MYSQL_USER="gopal"
+	    MYSQL_USER="abhi"
 	}	
     stages {
         
         stage('Frontend Git Pull') {
             steps {
 				git url: 'https://github.com/abhijain614/SpeMajor-Frontend.git',
-				branch: 'newbranch',
+				branch: 'main',
                 credentialsId: 'github'
             }
         }
@@ -18,13 +18,13 @@ pipeline {
         
         stage('Frontend build docker image') {
             steps {
-                sh 'docker build -t coolgopalgoyal/majorprojectfrontend:latest .'
+                sh 'docker build -t abhijain614/final-frontend:latest .'
             }
         }
         stage('Publish Frontend Docker Image') {
             steps {
-                withDockerRegistry([ credentialsId: "dockercred", url: "" ]) {
-                    sh 'docker push coolgopalgoyal/majorprojectfrontend:latest'
+                withDockerRegistry([ credentialsId: "mini-project", url: "" ]) {
+                    sh 'docker push abhijain614/final-frontend:latest'
                 }
             }
         }
@@ -33,7 +33,7 @@ pipeline {
         stage('Backend Git Pull') {
             steps {
 				git url: 'https://github.com/Gopal1999/SpeMajor-Backend.git',
-				branch: 'experiment',
+				branch: 'main',
                 credentialsId: 'github'
             }
         }
@@ -45,23 +45,21 @@ pipeline {
         }
         stage('Backend build docker image') {
             steps {
-                sh 'docker build -t coolgopalgoyal/majorprojectbackend:latest .'
+                sh 'docker build -t abhijain614/final-backend:latest .'
             }
         }
         stage('Publish Backend Docker Image') {
             steps {
-                withDockerRegistry([ credentialsId: "dockercred", url: "" ]) {
-                    sh 'docker push coolgopalgoyal/majorprojectbackend:latest'
+                withDockerRegistry([ credentialsId: "mini-project", url: "" ]) {
+                    sh 'docker push abhijain614/final-backend:latest'
                 }
             }
         }
         
-        
-        
-        stage('Project Deploy') {
-            steps {
-                sh 'docker-compose -f docker-compose.yaml up -d'
-            }
+        stage('Ansible Deploy') {
+                     steps {
+                          ansiblePlaybook becomeUser: null, colorized: true, disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory', playbook: 'playbook.yml' ,sudoUser: null
+                     }
         }
         
         
